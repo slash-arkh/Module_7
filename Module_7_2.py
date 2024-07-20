@@ -1,15 +1,17 @@
-from pprint import pprint
 
-def custom_write(file_name, *strings):
+
+def custom_write(file_name, strings):
     file = open(file_name, 'w', encoding= 'utf8')
     num = 0
     for i in strings:
         num += 1
         tuple_ = num, file.tell()
-        dict_ = tuple_, i
-        print(dict_)
+        strings_positions = {}
+        strings_positions[tuple_]=  i
         file.write(i + '\n')
+        print(strings_positions)
     file.close()
+
 
 info = [
     'Text for tell.',
@@ -18,4 +20,4 @@ info = [
     'Спасибо!'
     ]
 
-custom_write('test.txt', *info)
+custom_write('test.txt', info)
